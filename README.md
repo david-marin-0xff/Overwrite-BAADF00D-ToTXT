@@ -1,10 +1,12 @@
 **This PowerShell script overwrites a file with a repeating 4-byte pattern (0xBA 0xAD 0xF0 0x0D) for a user-specified number of passes, then creates a .txt file showing the pattern in readable hexadecimal form.
+**
+
 Features:
 
 Multi-pass overwrite using the 4-byte pattern BA AD F0 0D
 Prompts for full file path and number of passes
 
--- How the overwrite works (technical):
+**-- How the overwrite works (technical):**
 
 Pattern definition:
 The script defines the overwrite sequence as a byte array: [byte[]] $pattern = 0xBA, 0xAD, 0xF0, 0x0D
@@ -32,7 +34,7 @@ Readable text output:
 After all passes, the script generates a .txt file alongside the original, containing the pattern repeated as human-readable hex:
 BA AD F0 0D BA AD F0 0D ...
 
-Technical notes:
+**Technical notes:**
 Not a secure wipe: This script demonstrates basic overwriting and is not a guarantee of secure deletion. SSDs and file systems can retain copies.
 Buffer size: Uses 4 KB, aligned to common disk block sizes. Can be adjusted for performance.
 Flush behavior: Uses both Flush() and FlushToDisk() when available to improve data persistence.
@@ -40,7 +42,7 @@ File locking: Opens with FileShare.None to prevent simultaneous access.
 Error handling: Handles user cancellations and I/O exceptions gracefully.
 Performance: Overwriting is I/O-bound; SSDs will complete faster than HDDs.
 
-Usage:
+**Usage:**
 Run from PowerShell:
 .\Overwrite-BAADF00D-ToTXT.ps1
 Follow prompts for file path and number of passes.
